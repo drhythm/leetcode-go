@@ -53,7 +53,7 @@ func countTrapezoids(points [][]int) (ans int) {
 			// 1. Calculate Slope (dy/dx)
 			dx := x1 - x2
 			dy := y1 - y2
-			
+
 			// Normalize slope using GCD to avoid float precision issues
 			if dx == 0 {
 				dy = 1
@@ -79,7 +79,7 @@ func countTrapezoids(points [][]int) (ans int) {
 			// 3. Add to Midpoint Groups
 			// Midpoint * 2 = (x1+x2, y1+y2) to keep integers
 			mid := Point{x1 + x2, y1 + y2}
-			
+
 			// Initialize inner map if not exists
 			if midpointSlopeCounts[mid] == nil {
 				midpointSlopeCounts[mid] = make(map[Slope]int)
@@ -93,7 +93,7 @@ func countTrapezoids(points [][]int) (ans int) {
 		if len(intercepts) < 2 {
 			continue
 		}
-		
+
 		// Count lines that are collinear (share the same intercept 'val')
 		// We only want to pair lines with DIFFERENT 'val'.
 		lineCounts := make(map[int]int)
@@ -115,7 +115,7 @@ func countTrapezoids(points [][]int) (ans int) {
 		if len(slopesMap) < 2 {
 			continue
 		}
-		
+
 		// Logic: Only pair segments with DIFFERENT slopes at the same midpoint.
 		// Collinear segments (Same Slope, Same Midpoint) are not parallelograms.
 		totalDiagonals := 0
